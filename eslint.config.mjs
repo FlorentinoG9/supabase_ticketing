@@ -11,6 +11,9 @@ export default antfu(
       quotes: 'single',
       semi: false,
       jsx: true,
+      overrides: {
+        'style/jsx-quotes': ['error', 'prefer-single'],
+      },
     },
   },
 )
