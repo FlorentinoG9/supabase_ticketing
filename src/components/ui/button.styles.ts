@@ -1,3 +1,4 @@
+import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 export const buttonVariants = cva(
@@ -29,3 +30,5 @@ export const buttonVariants = cva(
     },
   },
 )
+
+export type ButtonStylesProps = VariantProps<typeof buttonVariants>

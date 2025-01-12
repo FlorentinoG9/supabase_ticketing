@@ -1,17 +1,17 @@
-import type { VariantProps } from 'class-variance-authority'
+import type { ButtonStylesProps } from './button.styles'
 import { cn } from '@/lib/utils'
-import { Slot } from '@radix-ui/react-slot'
 
+import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 import { buttonVariants } from './button.styles'
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
+  extends React.ComponentProps<'button'>,
+  ButtonStylesProps {
   asChild?: boolean
 }
 
-function Button({ ref, className, variant, size, asChild = false, ...props }: ButtonProps & { ref: React.RefObject<HTMLButtonElement> }) {
+function Button({ ref, className, variant, size, asChild = false, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
   return (
     <Comp

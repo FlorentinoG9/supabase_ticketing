@@ -6,7 +6,7 @@ import { Check } from 'lucide-react'
 
 import * as React from 'react'
 
-function Checkbox({ ref, className, ...props }: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & { ref: React.RefObject<React.ElementRef<typeof CheckboxPrimitive.Root>> }) {
+function Checkbox({ ref, className, ...props }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       ref={ref}

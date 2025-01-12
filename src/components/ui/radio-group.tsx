@@ -6,7 +6,7 @@ import { Circle } from 'lucide-react'
 
 import * as React from 'react'
 
-function RadioGroup({ ref, className, ...props }: React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & { ref: React.RefObject<React.ElementRef<typeof RadioGroupPrimitive.Root>> }) {
+function RadioGroup({ ref, className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
   return (
     <RadioGroupPrimitive.Root
       className={cn('grid gap-2', className)}
@@ -17,7 +17,7 @@ function RadioGroup({ ref, className, ...props }: React.ComponentPropsWithoutRef
 }
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
-function RadioGroupItem({ ref, className, ...props }: React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> & { ref: React.RefObject<React.ElementRef<typeof RadioGroupPrimitive.Item>> }) {
+function RadioGroupItem({ ref, className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
