@@ -1,18 +1,18 @@
-import type { ButtonStylesProps } from './button.styles'
-import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
-import { Button } from './button'
+import NextLink, { type LinkProps as NextLinkProps } from "next/link";
+import { Button } from "./button";
+import type { ButtonStylesProps } from "./button.styles";
 
 interface LinkProps extends NextLinkProps, ButtonStylesProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 
 export function Link({ children, href, className, ...props }: LinkProps) {
   return (
-    <Button asChild variant='link' className={className}>
+    <Button asChild className={className} variant="link">
       <NextLink href={href} {...props}>
         {children}
       </NextLink>
     </Button>
-  )
+  );
 }

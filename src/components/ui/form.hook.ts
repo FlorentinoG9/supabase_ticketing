@@ -1,40 +1,47 @@
-import * as React from 'react'
-import { type FieldPath, type FieldValues, useFormContext } from 'react-hook-form'
+import { createContext, useContext } from "react";
+import {
+  type FieldPath,
+  type FieldValues,
+  useFormContext,
+} from "react-hook-form";
 
 interface FormItemContextValue {
-  id: string
+  id: string;
 }
 
-interface FormFieldContextValue< TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> {
-  name: TName
+interface FormFieldContextValue<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+> {
+  name: TName;
 }
 
-const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue,
-)
+const FormFieldContext = createContext<FormFieldContextValue>(
+  {} as FormFieldContextValue
+);
 
-const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue,
-)
+const FormItemContext = createContext<FormItemContextValue>(
+  {} as FormItemContextValue
+);
 
 function useFormField() {
-  const fieldContext = React.useContext(FormFieldContext)
-  const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const fieldContext = useContext(FormFieldContext);
+  const itemContext = useContext(FormItemContext);
+  const { getFieldState, formState } = useFormContext();
 
-  const hasField = Boolean(fieldContext)
-  const hasItem = Boolean(itemContext)
+  const hasField = Boolean(fieldContext);
+  const hasItem = Boolean(itemContext);
 
   if (!hasField) {
-    throw new Error('useFormField should be used within <FormField>')
+    throw new Error("useFormField should be used within <FormField>");
   }
 
   if (!hasItem) {
-    throw new Error('useFormField should be used within <FormItem>')
+    throw new Error("useFormField should be used within <FormItem>");
   }
 
-  const { id } = itemContext
-  const fieldState = getFieldState(fieldContext.name, formState)
+  const { id } = itemContext;
+  const fieldState = getFieldState(fieldContext.name, formState);
 
   return {
     id,
@@ -43,7 +50,13 @@ function useFormField() {
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     ...fieldState,
-  }
+  };
 }
 
-export { FormFieldContext, type FormFieldContextValue, FormItemContext, type FormItemContextValue, useFormField }
+export {
+  FormFieldContext,
+  type FormFieldContextValue,
+  FormItemContext,
+  type FormItemContextValue,
+  useFormField,
+};

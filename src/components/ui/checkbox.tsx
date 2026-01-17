@@ -1,29 +1,28 @@
-'use client'
+"use client";
 
-import { cn } from '@/lib/utils'
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { Check } from 'lucide-react'
+import { Indicator, Root } from "@radix-ui/react-checkbox";
+import { Check } from "lucide-react";
+import type { ComponentProps } from "react";
+import { cn } from "@/lib/utils";
 
-import * as React from 'react'
-
-function Checkbox({ ref, className, ...props }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+function Checkbox({ ref, className, ...props }: ComponentProps<typeof Root>) {
   return (
-    <CheckboxPrimitive.Root
-      ref={ref}
+    <Root
       className={cn(
-        'peer size-4 shrink-0 rounded-sm border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
-        className,
+        "peer size-4 shrink-0 rounded-sm border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+        className
       )}
+      ref={ref}
       {...props}
     >
-      <CheckboxPrimitive.Indicator
-        className={cn('flex items-center justify-center text-current')}
+      <Indicator
+        className={cn("flex items-center justify-center text-current")}
       >
-        <Check className='size-4' />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-  )
+        <Check className="size-4" />
+      </Indicator>
+    </Root>
+  );
 }
-Checkbox.displayName = CheckboxPrimitive.Root.displayName
+Checkbox.displayName = Root.displayName;
 
-export { Checkbox }
+export { Checkbox };
